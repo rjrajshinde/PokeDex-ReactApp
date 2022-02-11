@@ -1,0 +1,51 @@
+.btn {
+  margin-right: 15px;
+}
+
+#pokedeximg {
+  width: 8em;
+  height: 2.5em;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+#search {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  #pokedeximg {
+    width: 5em;
+    height: 1.8em;
+  }
+  #search {
+    padding: 0.7em;
+    font-size: 16px;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+}
+
+@media only screen and (max-width: 370px) {
+  .navbar {
+    display: block;
+  }
+  .buttons {
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}

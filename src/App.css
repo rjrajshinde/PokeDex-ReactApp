@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.App {
+  padding-top: 7.9rem;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+.navbar {
+  background-color: #dc3545;
+}
+.navbar-brand {
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 23px;
+  margin: 0 20px;
+}

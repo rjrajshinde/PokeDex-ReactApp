@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+@media (prefers-reduced-motion: no-preference) {
+  #poke {
+    animation: App-logo-spin infinite 1s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card-title {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.red {
+  background-color: #ffb5b5;
+}
+.green {
+  background-color: #baf89b;
+}
+.blue {
+  background-color: #a2caff;
+}
+.brown {
+  background-color: #ecc9b1;
+}
+.yellow {
+  background-color: #f9ffaa;
+}
+.purple {
+  background-color: #e0b2ff;
+}
+.pink {
+  background-color: #ffc9d2;
+}
+.gray {
+  background-color: #dbdada;
+}
+.white {
+  background-color: #ffffff;
+}

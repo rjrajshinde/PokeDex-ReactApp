@@ -1,0 +1,94 @@
+@media (prefers-reduced-motion: no-preference) {
+  #poke {
+    animation: App-logo-spin infinite 1s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Nobile:ital,wght@1,700&display=swap");
+
+.card {
+  font-weight: 400;
+}
+.name {
+  font-family: "Nobile", sans-serif;
+  letter-spacing: 1px;
+}
+
+b {
+  font-family: "Nobile", sans-serif;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.float-end {
+  font-weight: 600;
+}
+
+.evoNames {
+  font-weight: 600;
+}
+
+.Bug {
+  background-color: #b1c12e;
+}
+.Dark {
+  background-color: #634939;
+}
+.Dragon {
+  background-color: #8f81cf;
+}
+.Electric {
+  background-color: #fcbc17;
+}
+.Fairy {
+  background-color: #f4b1f4;
+}
+.Fighting {
+  background-color: #96456f;
+}
+.Fire {
+  background-color: #e73b0c;
+}
+.Flying {
+  background-color: #a3b3f7;
+}
+.Ghost {
+  background-color: #6060b2;
+}
+.Grass {
+  background-color: #74c236;
+}
+.Ground {
+  background-color: #d3b357;
+}
+.Ice {
+  background-color: #a3e7fd;
+}
+.Normal {
+  background-color: #c8c4bc;
+}
+.Poison {
+  background-color: #af36b1;
+}
+.Psychic {
+  background-color: #f35c91;
+}
+.Rock {
+  background-color: #b9a156;
+}
+.Steel {
+  background-color: #b5b5c3;
+}
+.Water {
+  background-color: #58a8f8;
+}
