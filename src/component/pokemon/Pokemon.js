@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
@@ -15,6 +15,16 @@ const Sprite = styled.img`
   width: 10em;
   height: 10em;
   display: none;
+`;
+
+const PlayButton = styled.button`
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
 `;
 
 const StyledLink = styled(Link)`
@@ -51,6 +61,10 @@ export default function Pokemon() {
   const [hatchSteps, setHatchSteps] = useState();
   const [catchRate, setCatchRate] = useState();
   const [evoData, setEvoData] = useState([]);
+  const [voiceNote, setVoiceNote] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioRef = useRef(null);
 
   const location = useLocation();
   const { index } = location.state;
@@ -68,7 +82,7 @@ export default function Pokemon() {
   // };
 
   useEffect(() => {
-    //todo to reaload the page everytime this page route is called
+    //todo to reload the page every time this page route is called
     (function () {
       if (window.localStorage) {
         if (!localStorage.getItem("firstLoad")) {
@@ -79,7 +93,7 @@ export default function Pokemon() {
       }
     })();
 
-    //! if the pokemonindex from link is undefined then show message there is some error and redirect to the homepage
+    //! if the pokemon index from link is undefined then show message there is some error and redirect to the homepage
     if (index.pokemonIndex === undefined) {
       alert.error(
         "There is some ERROR here, Please Go Back to Home Page, Wait for to complete the loading and TRY AGAIN!",
@@ -109,7 +123,10 @@ export default function Pokemon() {
       result.data.sprites.other["official-artwork"].front_default
     );
 
-    //todo get nameo of the pokemon
+    //todo get the voice note of the pokemon
+    setVoiceNote(result.data.cries.latest);
+
+    //todo get name of the pokemon
     const name = result.data.name
       .toLowerCase()
       .split("-")
@@ -126,7 +143,7 @@ export default function Pokemon() {
     const weight = Math.round(result.data.weight / 10);
     setWeight(weight);
 
-    //! To get Hp, Attack, Defense, Special-Attact, Special-Defense, Speed
+    //! To get Hp, Attack, Defense, Special-Attack, Special-Defense, Speed
 
     result.data.stats.map((stat) => {
       switch (stat.stat.name) {
@@ -280,6 +297,29 @@ export default function Pokemon() {
     // window.scrollTo(0, 0);
   };
 
+  //! To play the voice note
+  // const playAudio = () => {
+  //   const audio = new Audio(voiceNote);
+  //   audio.play();
+  // };
+  const handlePlay = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(voiceNote);
+      audioRef.current.addEventListener("ended", () => {
+        setIsPlaying(false); // Reset glow when audio ends
+      });
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <>
       <div
@@ -308,6 +348,19 @@ export default function Pokemon() {
               </div>
               <div className="col-7">
                 <div className="float-end">
+                  {/* <button type="button" onClick={playAudio}>
+                    Click
+                  </button> */}
+                  <PlayButton
+                    onClick={handlePlay}
+                    style={{
+                      backgroundColor: isPlaying ? "#ffcc00" : "#ddd",
+                      boxShadow: isPlaying ? "0 0 10px #ffcc00" : "none",
+                    }}
+                    title="Play Pokemon Voice Note"
+                  >
+                    🔊
+                  </PlayButton>
                   {types.map((type) => (
                     <span
                       key={type}
